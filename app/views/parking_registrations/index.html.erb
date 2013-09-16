@@ -1,0 +1,35 @@
+<h1>Listing parking_registrations</h1>
+
+<table class="table table-striped">
+  <thead>
+    <tr>
+      <th>First name</th>
+      <th>Last name</th>
+      <th>Email</th>
+      <th>Spot number</th>
+      <th>Parked on</th>
+      <th></th>
+      <th></th>
+      <th></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @parking_registrations.each do |parking_registration| %>
+      <tr>
+        <td><%= parking_registration.first_name %></td>
+        <td><%= parking_registration.last_name %></td>
+        <td><%= parking_registration.email %></td>
+        <td><%= parking_registration.spot_number %></td>
+        <td><%= parking_registration.parked_on %></td>
+        <td><%= link_to 'Show', parking_registration %></td>
+        <td><%= link_to 'Edit', edit_parking_registration_path(parking_registration) %></td>
+        <td><%= link_to 'Destroy', parking_registration, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<%= link_to 'New Parking registration', new_parking_registration_path %>

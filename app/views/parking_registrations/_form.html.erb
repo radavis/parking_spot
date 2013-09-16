@@ -1,0 +1,38 @@
+<%= form_for(@parking_registration, html: { class: 'form' }) do |f| %>
+  <% if @parking_registration.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@parking_registration.errors.count, "error") %> prohibited this parking_registration from being saved:</h2>
+
+      <ul>
+      <% @parking_registration.errors.full_messages.each do |msg| %>
+        <li><%= msg %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= f.label :first_name %><br>
+    <%= f.text_field :first_name %>
+  </div>
+  <div class="field">
+    <%= f.label :last_name %><br>
+    <%= f.text_field :last_name %>
+  </div>
+  <div class="field">
+    <%= f.label :email %><br>
+    <%= f.text_field :email %>
+  </div>
+  <div class="field">
+    <%= f.label :spot_number %><br>
+    <%= f.number_field :spot_number %>
+  </div>
+  <!--
+  <div class="field">
+    <%= f.label :parked_on %><br>
+    <%= f.date_select :parked_on %>
+  </div> -->
+  <div class="actions">
+    <%= f.submit 'Register' %>
+  </div>
+<% end %>

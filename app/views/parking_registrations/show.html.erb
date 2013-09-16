@@ -1,0 +1,29 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>First name:</strong>
+  <%= @parking_registration.first_name %>
+</p>
+
+<p>
+  <strong>Last name:</strong>
+  <%= @parking_registration.last_name %>
+</p>
+
+<p>
+  <strong>Email:</strong>
+  <%= @parking_registration.email %>
+</p>
+
+<p>
+  <strong>Spot number:</strong>
+  <%= @parking_registration.spot_number %>
+</p>
+
+<p>
+  <strong>Parked on:</strong>
+  <%= @parking_registration.parked_on %>
+</p>
+
+<%= link_to 'Edit', edit_parking_registration_path(@parking_registration) %> |
+<%= link_to 'Back', parking_registrations_path %>
