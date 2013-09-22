@@ -21,6 +21,6 @@ class ParkingRegistration < ActiveRecord::Base
   end
 
   def occupied?(spot)
-    ParkingRegistration.where(spot_number: spot).where(parked_on: Date.today).first.any?
+    ParkingRegistration.where(spot_number: spot).where(parked_on: Date.today).any?
   end
 end
