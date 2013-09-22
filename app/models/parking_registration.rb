@@ -23,4 +23,18 @@ class ParkingRegistration < ActiveRecord::Base
   def occupied?(spot)
     ParkingRegistration.where(spot_number: spot).where(parked_on: Date.today).any?
   end
+
+  def neighbors
+    low_neighbor = ParkingRegistration.where({
+        spot_number: self.spot_number - 1,
+        parked_on: self.parked_on
+        }).first
+
+    high_neighbor = ParkingRegistration.where({
+        spot_number: self.spot_number + 1,
+        parked_on: self.parked_on
+        }).first
+
+    [low_neighbor, high_neighbor]
+  end
 end

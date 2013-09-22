@@ -16,7 +16,7 @@ feature "remember user's spot", %q{
 end
 
 
-feature "suggest last spot", %q {
+feature "suggest last spot", %q{
   AS a parker
   I want the system to suggest the last spot I parked in
   So that I don't have to re-enter the slot number

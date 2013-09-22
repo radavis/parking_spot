@@ -14,6 +14,7 @@ feature "Remembers email address", %q{
   #   field is left blank
 
   scenario "user has entered email previously" do
+    pending "not implemented yet"
     visit '/'
 
     fill_in 'First name', with: 'Harry'

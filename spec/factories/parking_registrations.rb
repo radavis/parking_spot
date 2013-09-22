@@ -6,6 +6,6 @@ FactoryGirl.define do
     last_name "Mnemonic"
     email "johnny@infocarriers.io"
     spot_number 1
-    parked_on "2013-09-16"
+    parked_on Date.today
   end
 end

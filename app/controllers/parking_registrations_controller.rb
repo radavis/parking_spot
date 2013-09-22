@@ -10,6 +10,7 @@ class ParkingRegistrationsController < ApplicationController
   # GET /parking_registrations/1
   # GET /parking_registrations/1.json
   def show
+    @parking_registration = ParkingRegistration.find(params[:id])
   end
 
   # GET /parking_registrations/new
@@ -28,7 +29,7 @@ class ParkingRegistrationsController < ApplicationController
 
     if @parking_registration.park
       flash[:notice] = 'You registered successfully.'
-      redirect_to '/'
+      redirect_to "/parking_registrations/#{@parking_registration.id}"
     else
       render :new
     end

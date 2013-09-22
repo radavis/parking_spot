@@ -1,12 +1,17 @@
 <p id="notice"><%= notice %></p>
 
 <p>
-  <strong>First name:</strong>
-  <%= @parking_registration.first_name %>
+  <% low_neighbor = @parking_registration.neighbors.first %>
+  <% high_neighbor = @parking_registration.neighbors.last %>
+
+  <%= "Low neighbor: #{low_neighbor.first_name}" if low_neighbor %>
+  <%= "High neighbor: #{high_neighbor.first_name}" if high_neighbor %>
+  <%= "You have no neighbors" if low_neighbor.nil? and high_neighbor.nil? %>
 </p>
 
 <p>
-  <strong>Last name:</strong>
+  <strong>Name:</strong>
+  <%= @parking_registration.first_name %>
   <%= @parking_registration.last_name %>
 </p>
 

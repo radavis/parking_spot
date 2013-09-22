@@ -24,4 +24,30 @@ describe ParkingRegistration do
     end
   end
 
+  describe 'neighbors' do
+
+    it 'has a neighbor if above' do
+      low_neighbor = FactoryGirl.create(:parking_registration,
+        spot_number: 5)
+      reg = FactoryGirl.build(:parking_registration,
+        spot_number: 6)
+      expect(reg.neighbors).to eql([low_neighbor, nil])
+    end
+
+    it 'has a neighbor if below' do
+      high_neighbor = FactoryGirl.create(:parking_registration,
+        spot_number: 7)
+      reg = FactoryGirl.build(:parking_registration,
+        spot_number: 6)
+      expect(reg.neighbors).to eql([nil, high_neighbor])
+    end
+
+    it 'has no neighbors if no one near me' do
+      FactoryGirl.create(:parking_registration,
+        spot_number: 10)
+      reg = FactoryGirl.build(:parking_registration,
+        spot_number: 20)
+      expect(reg.neighbors).to eql([nil, nil])
+    end
+  end
 end
