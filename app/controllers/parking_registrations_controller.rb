@@ -15,6 +15,9 @@ class ParkingRegistrationsController < ApplicationController
 
   # GET /parking_registrations/new
   def new
+    if session[:parking_registration_id]
+      @email = ParkingRegistration.find(session[:parking_registration_id]).email
+    end
     @parking_registration = ParkingRegistration.new
   end
 
@@ -28,21 +31,12 @@ class ParkingRegistrationsController < ApplicationController
     @parking_registration = ParkingRegistration.new(parking_registration_params)
 
     if @parking_registration.park
+      session[:parking_registration_id] = @parking_registration.id
       flash[:notice] = 'You registered successfully.'
       redirect_to "/parking_registrations/#{@parking_registration.id}"
     else
       render :new
     end
-
-    # respond_to do |format|
-    #   if @parking_registration.save
-    #     format.html { redirect_to @parking_registration, notice: 'You registered successfully.' }
-    #     format.json { render action: 'show', status: :created, location: @parking_registration }
-    #   else
-    #     format.html { render action: 'new' }
-    #     format.json { render json: @parking_registration.errors, status: :unprocessable_entity }
-    #   end
-    # end
   end
 
   # PATCH/PUT /parking_registrations/1

@@ -14,17 +14,16 @@ feature "Remembers email address", %q{
   #   field is left blank
 
   scenario "user has entered email previously" do
-    pending "not implemented yet"
     visit '/'
 
-    fill_in 'First name', with: 'Harry'
-    fill_in 'Last name', with: 'Potter'
+    fill_in 'First name', with: 'One'
+    fill_in 'Last name', with: 'Eye'
     fill_in 'Spot number', with: 15
-    fill_in 'Email', with: 'hp@magic.com'
+    fill_in 'Email', with: 'valhalla@rising.org'
     click_button 'Register'
 
     visit '/'
-    expect(page).to have_content('hp@magic.com')
+    expect(page).to have_selector("input[value='valhalla@rising.org']")
   end
 
 end
